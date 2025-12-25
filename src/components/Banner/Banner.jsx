@@ -2,8 +2,13 @@ import React from 'react';
 import googlePlay from '../../assets/google play.png';
 import appStore from '../../assets/app store.png';
 import hero from '../../assets/hero.png'
+import download from '../../assets/icon-downloads.png'
+import rating from '../../assets/icon-ratings.png'
+import { Link } from 'react-router';
 
-const Banner = () => {
+const Banner = ({data}) => {
+    console.log(data);
+
     return (
         <div>
             <div className=' max-w-290 mx-auto bg-white mt-11'>
@@ -52,8 +57,49 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
-            
+            <div className='mt-8'>
+                <h1 className='text-4xl text-center font-bold'>Trending Apps</h1>
+                <p className='text-gray-500 text-center'>Explore All Trending Apps on the Market developed by us</p>
+
+                <div className='grid grid-cols-4 gap-3 ml-3 mr-0 mt-5'>
+                    {
+                        data.map(app =>{
+
+                            const totalRatings = app.ratings.reduce((sum,r) => sum+r.count,0);
+                            
+
+                    return(
+                        <Link to={`/appDetail/${app.id}`}>
+
+                        <div key={app.id} className='w-72 h-87 p-5 bg-white rounded-sm shadow-md'>
+                            <img className='w-70 h-60 rounded-2xl' src={app.image} alt="" />
+                        <p className='mt-2 text-xl'>{app.title}</p>
+                    
+                        <div className='flex justify-between mt-2 mb-3'>
+                            <div className='flex items-center gap-2 bg-gray-300 p-2 rounded-md'>
+                             <img className='w-6 h-6' src={download} alt="" />
+                             <p className='font-semibold'>{app.downloads}</p>
+                            </div>
+
+                            <div className='flex items-center gap-2 bg-amber-200 p-2 rounded-md'>
+                            <img className='w-6 h-6' src={rating} alt="" />
+                        
+                            <p className='font-semibold'>{totalRatings}</p>
+                            </div>
+                        </div>
+
+                         </div>
+
+                        </Link>
+                        )
+                    })}   
+            </div>
+            <div className='text-center mt-6'>
+                <button className='text-xl bg-gradient-to-r from-[#632EE3] to-[#9F62F2] p-2 text-white rounded-sm'>Show All</button>
+            </div>
         </div>
+
+     </div>   
         
     );
 };
