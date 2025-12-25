@@ -7,7 +7,7 @@ import rating from '../../assets/icon-ratings.png'
 import { Link } from 'react-router';
 
 const Banner = ({data}) => {
-    console.log(data);
+    // console.log(data);
 
     return (
         <div>
@@ -97,7 +97,7 @@ const Banner = ({data}) => {
             <div className='text-center mt-6'>
                 <button className='text-xl bg-gradient-to-r from-[#632EE3] to-[#9F62F2] p-2 text-white rounded-sm'>Show All</button>
             </div>
-        </div>
+            </div>
 
      </div>   
         

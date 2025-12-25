@@ -5,9 +5,9 @@ import gitHub from '../../assets/gitHub-logo.png'
 
 const NavBar = () => {
     const links = <>
-        <Link to='/'><li className='mr-2'>Home</li></Link>
-        <Link to='/apps'><li className='mr-2'>Apps</li></Link>
-        <Link to='/installation'><li className='mr-2'>Installation</li></Link>
+        <Link to='/'><li className='mr-2 font-semibold'>Home</li></Link>
+        <Link to='/apps'><li className='mr-2 font-semibold'>Apps</li></Link>
+        <Link to='/installation'><li className='mr-2 font-semibold'>Installation</li></Link>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
