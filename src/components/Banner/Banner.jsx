@@ -66,7 +66,7 @@ const Banner = ({data}) => {
                         data.map(app =>{
 
                     return(
-                        <Link to={`/appDetail/${app.id}`}>
+                        <Link onClick={() => window.scrollTo(0,0)} to={`/appDetail/${app.id}`}>
 
                         <div key={app.id} className='w-72 h-87 p-5 bg-white rounded-sm'>
                             <img className='w-70 h-60 rounded-2xl' src={app.image} alt="" />

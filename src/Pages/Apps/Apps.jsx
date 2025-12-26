@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router";
 import download from '../../assets/icon-downloads.png'
 import rating from '../../assets/icon-ratings.png'
 import { Link } from 'react-router';
+import appError from '../../assets/App-Error.png'
 
 const Apps = () => {
     const appsData = useLoaderData();
@@ -30,13 +31,9 @@ const Apps = () => {
 
         <div className="grid grid-cols-4 gap-3 ml-3 mr-0 mt-5">
           {filteredApps.map((app) => {
-            // const totalRatings = app.ratings.reduce(
-            //   (sum, r) => sum + r.count,
-            //   0
-            // );
 
             return (
-              <Link to={`/appDetail/${app.id}`}>
+              <Link onClick={() => window.scrollTo(0,0)} to={`/appDetail/${app.id}`}>
                 <div
                   key={app.id}
                   className="w-72 h-87 p-5 bg-white rounded-sm"
@@ -66,9 +63,15 @@ const Apps = () => {
           })}
         </div>
         {filteredApps.length === 0 && (
-            <p className="text-center mt-6 text-red-500 font-semibold">
-              No apps found
-            </p>
+            <div className="flex flex-col items-center mt-12">
+              <img className="w-64 h-64 mb-4"  src={appError} alt="" />
+              <h1 className="text-2xl font-bold">OPPS!! APP NOT FOUND</h1>
+              <p>The App you are requesting is not found on our system.  please try another apps</p>
+              <Link to='/apps'
+                              onClick={() =>{setSearchText(""); window.scrollTo(0,0)}}>
+                              <button className='mt-4 text-xl bg-gradient-to-r from-[#632EE3] to-[#9F62F2] p-2 text-white rounded-sm'>Go Back!</button>
+                              </Link>
+            </div>
           )}
       </div>
     </div>

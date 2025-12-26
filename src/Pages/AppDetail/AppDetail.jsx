@@ -1,5 +1,4 @@
-import React from "react";
-import demoImg from "../../assets/logo.png";
+import React, { useContext } from "react";
 import download from "../../assets/icon-downloads.png";
 import rating from "../../assets/icon-ratings.png";
 import review from "../../assets/icon-review.png";
@@ -14,18 +13,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useLoaderData, useParams } from "react-router";
+import { InstallContext } from "../../Context/Context";
+
+
 
 const AppDetail = () => {
 
     const allApps = useLoaderData();
     const {id} = useParams();
-    console.log(id);
+    // console.log(id);
+    const {installApp, installedApps} = useContext(InstallContext);
 
     const app = allApps.find(app => app.id === parseInt(id));
 
-    // const avgRating = Number((
-    //     app.ratings.reduce((sum, r) => sum + parseInt(r.name)* r.count,0)/app.ratings.reduce((sum,r)=> sum+r.count,0)
-    // ).toFixed(1))
+    const isInstalled = installedApps.find(item => item.id === app.id);
 
 
   return (
@@ -57,12 +58,13 @@ const AppDetail = () => {
             </div>
           </div>
           <div>
-            <button className="p-2 rounded-sm bg-[#00D390] text-white mt-2">
-              Install Now
+            <button onClick={() => installApp(app)} disabled={isInstalled} className={`p-2 rounded-sm mt-2 text-white ${isInstalled? "bg-gray-400":"bg-[#00D390]"}`}>
+              {isInstalled ?"Installed":"Install Now"}
             </button>
           </div>
         </div>
       </div>
+
       <div className="border border-gray-400 mt-8 mb-4"></div>
 
       <div className="mt-15 mr-8">
