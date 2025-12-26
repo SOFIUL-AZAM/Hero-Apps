@@ -65,13 +65,10 @@ const Banner = ({data}) => {
                     {
                         data.map(app =>{
 
-                            const totalRatings = app.ratings.reduce((sum,r) => sum+r.count,0);
-                            
-
                     return(
                         <Link to={`/appDetail/${app.id}`}>
 
-                        <div key={app.id} className='w-72 h-87 p-5 bg-white rounded-sm shadow-md'>
+                        <div key={app.id} className='w-72 h-87 p-5 bg-white rounded-sm'>
                             <img className='w-70 h-60 rounded-2xl' src={app.image} alt="" />
                         <p className='mt-2 text-xl'>{app.title}</p>
                     
@@ -84,7 +81,7 @@ const Banner = ({data}) => {
                             <div className='flex items-center gap-2 bg-amber-200 p-2 rounded-md'>
                             <img className='w-6 h-6' src={rating} alt="" />
                         
-                            <p className='font-semibold'>{totalRatings}</p>
+                            <p className='font-semibold'>{app.ratingAvg}</p>
                             </div>
                         </div>
 

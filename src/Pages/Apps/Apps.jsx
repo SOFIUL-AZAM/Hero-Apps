@@ -30,16 +30,16 @@ const Apps = () => {
 
         <div className="grid grid-cols-4 gap-3 ml-3 mr-0 mt-5">
           {filteredApps.map((app) => {
-            const totalRatings = app.ratings.reduce(
-              (sum, r) => sum + r.count,
-              0
-            );
+            // const totalRatings = app.ratings.reduce(
+            //   (sum, r) => sum + r.count,
+            //   0
+            // );
 
             return (
               <Link to={`/appDetail/${app.id}`}>
                 <div
                   key={app.id}
-                  className="w-72 h-87 p-5 bg-white rounded-sm shadow-md"
+                  className="w-72 h-87 p-5 bg-white rounded-sm"
                 >
                   <img
                     className="w-70 h-60 rounded-2xl"
@@ -57,7 +57,7 @@ const Apps = () => {
                     <div className="flex items-center gap-2 bg-amber-200 p-2 rounded-md">
                       <img className="w-6 h-6" src={rating} alt="" />
 
-                      <p className="font-semibold">{totalRatings}</p>
+                      <p className="font-semibold">{app.ratingAvg}</p>
                     </div>
                   </div>
                 </div>
