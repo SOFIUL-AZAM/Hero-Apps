@@ -95,7 +95,10 @@ const Banner = ({data}) => {
                     })}   
             </div>
             <div className='text-center mt-6'>
+                <Link to='/apps'
+                onClick={() => window.scrollTo(0,0)}>
                 <button className='text-xl bg-gradient-to-r from-[#632EE3] to-[#9F62F2] p-2 text-white rounded-sm'>Show All</button>
+                </Link>
             </div>
             </div>
 
