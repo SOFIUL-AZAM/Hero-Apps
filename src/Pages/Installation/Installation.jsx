@@ -21,7 +21,7 @@ const Installation = () => {
             return a.ratingAvg - b.ratingAvg;
         }
         return 0;
-    })
+    });
 
     return (
         <div>
@@ -37,11 +37,19 @@ const Installation = () => {
                     </details>
                 </div>
 
+            {
+                !installedApps.length && (
+                    <div className='flex flex-col items-center mt-15 mb-15'>
+                        <h1 className='text-2xl font-bold'>No Apps Installed</h1>
+                    </div>
+                )
+            }
+
 
             {
             sortedApps.map(app => (
             <div>
-            <div className='flex justify-between items-center w-300 mx-auto mt-3 p-2 bg-white'>
+            <div className='flex  flex-col md:flex-row justify-between items-center w-full md:w-300 mx-auto mt-3 p-2 bg-white'>
             <div className="flex gap-7 items-center p-2">
                     <img className="w-15 h-14" src={app.image} alt="" />
                     <div>

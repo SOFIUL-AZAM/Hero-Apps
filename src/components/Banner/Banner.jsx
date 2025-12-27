@@ -61,7 +61,7 @@ const Banner = ({data}) => {
                 <h1 className='text-4xl text-center font-bold'>Trending Apps</h1>
                 <p className='text-gray-500 text-center'>Explore All Trending Apps on the Market developed by us</p>
 
-                <div className='grid grid-cols-4 gap-3 ml-3 mr-0 mt-5'>
+                <div className='grid grid-cols-1 md:grid-cols-4 gap-3 ml-3 mr-0 mt-5'>
                     {
                         data.map(app =>{
 
