@@ -1,13 +1,15 @@
 import React from 'react';
 import logo from '../../assets/logo.png'
-import { Link } from 'react-router';
+import { Link , NavLink } from 'react-router';
 import gitHub from '../../assets/gitHub-logo.png'
 
 const NavBar = () => {
     const links = <>
-        <Link to='/'><li className='mr-2 font-semibold'>Home</li></Link>
-        <Link to='/apps'><li className='mr-2 font-semibold'>Apps</li></Link>
-        <Link to='/installation'><li className='mr-2 font-semibold'>Installation</li></Link>
+        <NavLink to='/' className={({isActive}) => isActive ? "mr-2 font-semibold border-b-2 border-[#632EE3]" : "mr-2 font-semibold"} ><li>Home</li></NavLink>
+
+        <NavLink to='/apps' className={({isActive}) => isActive ? "mr-2 font-semibold border-b-2 border-[#632EE3]" : "mr-2 font-semibold"}><li >Apps</li></NavLink>
+
+        <NavLink to='/installation' className={({isActive}) => isActive ? "mr-2 font-semibold border-b-2 border-[#632EE3]" : "mr-2 font-semibold"}><li>Installation</li></NavLink>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -25,10 +27,12 @@ const NavBar = () => {
 
     </div>
     
-    <div className='flex gap-1 items-center'>
+    <Link to="/">
+        <div className='flex gap-1 items-center'>
         <img className='w-6 h-6' src={logo} alt="" />
         <p className=" text-xl">HERO.IO</p>
-    </div>
+        </div>
+    </Link>
 
   </div>
   <div className="navbar-center hidden lg:flex">

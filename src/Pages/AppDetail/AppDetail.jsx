@@ -14,10 +14,11 @@ import {
 } from "recharts";
 import { useLoaderData, useParams } from "react-router";
 import { InstallContext } from "../../Context/Context";
-
+ import { ToastContainer, toast } from 'react-toastify';
 
 
 const AppDetail = () => {
+  
 
     const allApps = useLoaderData();
     const {id} = useParams();
@@ -27,6 +28,11 @@ const AppDetail = () => {
     const app = allApps.find(app => app.id === parseInt(id));
 
     const isInstalled = installedApps.find(item => item.id === app.id);
+    
+    const handleInstall = () =>{
+      installApp(app)
+      toast("Installed Successfully");
+    }
 
 
   return (
@@ -58,9 +64,11 @@ const AppDetail = () => {
             </div>
           </div>
           <div>
-            <button onClick={() => installApp(app)} disabled={isInstalled} className={`p-2 rounded-sm mt-2 text-white ${isInstalled? "bg-gray-400":"bg-[#00D390]"}`}>
+            <button onClick={handleInstall} disabled={isInstalled} className={`p-2 rounded-sm mt-2 text-white ${isInstalled? "bg-gray-400":"bg-[#00D390]"}`}>
               {isInstalled ?"Installed":"Install Now"}
             </button>
+            <ToastContainer />
+            
           </div>
         </div>
       </div>
