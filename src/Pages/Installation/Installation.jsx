@@ -26,7 +26,8 @@ const Installation = () => {
     return (
         <div>
 
-            <div className='flex justify-end'>
+            <div className='flex justify-between items-center'>
+                <h1 className='font-semibold'>({installedApps.length}) Apps Found</h1>
                     <details className="dropdown">
                         <summary className="btn m-1">Sort by : {sort?sort:""}</summary>
                          <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">

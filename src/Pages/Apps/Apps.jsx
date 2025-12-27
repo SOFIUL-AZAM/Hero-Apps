@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router";
 import download from '../../assets/icon-downloads.png'
 import rating from '../../assets/icon-ratings.png'
 import { Link } from 'react-router';
 import appError from '../../assets/App-Error.png'
+import { useLoader } from "../../Context/LoaderContext";
+import { InstallContext } from "../../Context/Context";
 
 const Apps = () => {
     const appsData = useLoaderData();
@@ -11,6 +13,21 @@ const Apps = () => {
 
     const filteredApps = appsData.filter((app) => app.title.toLowerCase().includes(searchText.toLowerCase()));
     // console.log(appData)
+
+    const {showLoader, hideLoader} =useLoader();
+
+    const {installApp, installedApps} = useContext(InstallContext)
+
+    const handleSearch = (e) => {
+      const value = e.target.value;
+      showLoader ("Searching Apps...");
+
+      setTimeout(() => {
+        setSearchText(value);
+        hideLoader();
+      }, 300);
+    };
+
   return (
     <div>
       <div className="mt-8">
@@ -20,13 +37,13 @@ const Apps = () => {
         </p>
 
         <div className=" flex justify-between items-center m-2 mt-6 mb-6">
-            <p> 
+            <p className="font-semibold"> 
                 {searchText
                     ?`(${filteredApps.length})`: `(${appsData.length}) Apps Found`
                 }
             </p>
 
-            <input type="text" placeholder="Search apps" className="border px-4 py-2 w-96 rounded-md outline none" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+            <input type="text" placeholder="Search apps" className="border px-4 py-2 w-96 rounded-md outline none" value={searchText} onChange={handleSearch} />
         </div>
 
         <div className="grid grid-cols-4 gap-3 ml-3 mr-0 mt-5">
